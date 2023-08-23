@@ -1,6 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
 // import HomeView from '../views/HomeView.vue'
 
+function cekToken(to,from, next){
+  var isAuthenticated = false;
+  if (localStorage.getItem('token'))
+  isAuthenticated = true;
+else
+isAuthenticated =false
+if(isAuthenticated){
+  next();
+}
+else{
+  next('/login')
+}
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,9 +55,35 @@ const router = createRouter({
       component: () => import("../views/CartView.vue"),
     },
     {
-      path: "/singleproduct",
+      path: "/brands",
+      name: "brands",
+      component: () => import("../views/AllBrandView.vue"),
+    },
+    {
+      path: "/categories",
+      name: "categories",
+      component: () => import("../views/CategorieViews.vue"),
+    },
+    {
+      path: "/product:slug",
       name: "singleproduct",
       component: () => import("../views/SingleProductView.vue"),
+    },
+    {
+      path: "/user",
+      name: "user",
+      component: () => import("../views/UserView.vue"),
+      beforeEnter : cekToken,
+    },
+
+
+
+
+
+    {
+      path: '/:catchAll(.*)*',
+      name: "PageNotFound",
+      component:  () => import("../views/PageNotFoundView.vue"),
     },
   ],
 });

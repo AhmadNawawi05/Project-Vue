@@ -12,10 +12,10 @@ const auth = {
     async login({ commit }, credentials) {
       try {
         const response = await axios.post(
-          "https://fakestoreapi.com/auth/login",
+          'https://ecommerce.olipiskandar.com/api/v1/auth/login',
           credentials
         );
-        const token = response.data.token;
+        const token = response.data.access_token;
 
         // Save token to localStorage
         localStorage.setItem("token", token);
@@ -28,6 +28,27 @@ const auth = {
         return false;
       }
     },
+
+    async signUp({ commit }, credentials) {
+      try {
+        const response = await axios.post(
+          'https://ecommerce.olipiskandar.com/api/v1/auth/signup',
+          credentials
+        );
+        const token = response.data.access_token;
+
+        // Save token to localStorage
+        localStorage.setItem("token", token);
+
+        commit("SET_TOKEN", token);
+        console.log("Token saved:", token);
+        return true;
+      } catch (error) {
+        console.error(error);
+        return false;
+      }
+    },
+
     logout({ commit }) {
       // Remove token from localStorage
       const token = localStorage.getItem("token");
@@ -37,6 +58,7 @@ const auth = {
       console.log("Token removed:", token);
       window.location.href = "/login";
     },
+
   },
   mutations: {
     SET_TOKEN(state, token) {

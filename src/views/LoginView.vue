@@ -18,7 +18,7 @@
                                 or Username</label>
                             <input type="text"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                id="email" v-model="username" placeholder="Enter your email or username" autofocus="" />
+                                id="email" v-model="email" placeholder="Enter your email " autofocus="" />
                         </div>
 
                         <div class="mb-4">
@@ -54,7 +54,7 @@
                   <br>
                   <br>
                   <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                      Don’t have an account yet?     <router-link class="font-medium text-primary-600 hover:underline dark:text-primary-500" :to="{ name: 'register' }">Sign up</router-link> 
+                      Don’t have an account yet? <router-link class="font-medium text-primary-600 hover:underline dark:text-primary-500" :to="{ name: 'register' }">Sign up</router-link> 
                   </p>
                   </div>
               </form>
@@ -70,7 +70,7 @@ import { mapActions } from 'vuex';
 export default {
     data() {
         return {
-            username: '',
+            email: '',
             password: '',
         };
     },
@@ -78,7 +78,7 @@ export default {
         ...mapActions('auth', ['login']),
         async performLogin() {
             const credentials = {
-                username: this.username,
+                email: this.email,
                 password: this.password,
             };
 

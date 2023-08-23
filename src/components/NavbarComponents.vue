@@ -54,6 +54,15 @@
       <li>
         <router-link :to="{ name: 'cart' }">Cart</router-link>
       </li>
+      <li>
+        <router-link :to="{ name: 'categories' }">Categorie</router-link>
+      </li>
+      <li>
+        <router-link :to="{ name: 'brands' }">Brand</router-link>
+      </li>
+      <li>
+        <router-link :to="{ name: 'user' }">User</router-link>
+      </li>
 
     </ul>
   </div>
@@ -70,6 +79,7 @@
 </template>
 
 <script>
+
 import { mapActions, mapGetters } from "vuex";
 
 export default {
