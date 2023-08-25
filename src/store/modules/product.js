@@ -1,9 +1,12 @@
 import axios from "axios";
+import router from "../../router";
+
 
 const product = {
   namespaced: true,
   state: {
     productData: [],
+    cartsAdd: [],
   },
 
   getters: {
@@ -52,6 +55,36 @@ const product = {
       }
     },
 
+    async addCarts({ commit,  dispatch }, variation_id ) {
+      try {
+        const response = await axios.post(
+          'https://ecommerce.olipiskandar.com/api/v1/carts/add',
+          {
+            "variation_id": variation_id,
+            "qty": 1,
+            "temp_user_id": null
+        },
+        {  headers: {
+          'Authorization': `Bearer ${localStorage.getItem ("token")}`
+        }
+       }
+        );
+        commit("ADD_CARTS", response.data);
+        console.log('response from carts', response.data )
+
+        //benarkan besok di sekolah 
+
+        // router.push(`/product/${this.product.id}`);
+          
+      } catch (error) {
+        console.error(error);
+      }
+
+      finally{
+          dispatch('cart/fetchCarts', null, {root:true} )
+      }
+    },
+
     // async fetchFilterProduct ({ commit }, productCategory){
     //   try {
     //     const response = await axios.get (
@@ -72,8 +105,11 @@ const product = {
     SET_SINGLE_PRODUCT(state, product) {
       state.singleProduct = product;
     },
-    // SET_FILTER_CATEGORY(state, product) {
-    //   state.filterProduk = product;
+    ADD_CARTS(state, addCarts) {
+      state.cartsAdd = addCarts;
+    },
+    // RE_CARTS(state, cartsAdd) {
+    //   state.cartsAdd = cartsAdd;  
     // }
   },
 };

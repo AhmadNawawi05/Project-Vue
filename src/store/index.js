@@ -4,6 +4,7 @@ import product from "./modules/product"
 import categories from "./modules/categories"
 import brand from "./modules/brand"
 import user from "./modules/user";
+import cart from "./modules/cart"
 
 const store = createStore({
   state: {
@@ -14,7 +15,8 @@ const store = createStore({
     product,
     categories,
     brand,
-    user
+    user,
+    cart
   },
 });
 
