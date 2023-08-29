@@ -25,7 +25,7 @@
                                     </div>
                                 </div>
                                 <div class="flex justify-between space-x-8 items-start w-full">
-                                    <p class="text-base dark:text-white xl:text-lg leading-6">{{ formatCurrency(order.total) }} <span class="text-red-300 line-through"> $45.00</span></p>
+                                    <p class="text-base dark:text-white xl:text-lg leading-6">{{ formatCurrency(order.total) }}</p>
                                     <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">{{ order.quantity }}</p>
                                     <p class="text-base dark:text-white xl:text-lg font-semibold leading-6 text-gray-800">{{ formatCurrency(order.total) }}</p>
                                 </div>
