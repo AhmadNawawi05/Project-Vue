@@ -1,6 +1,4 @@
 import axios from "axios";
-import router from "../../router";
-
 
 const product = {
   namespaced: true,
@@ -16,25 +14,18 @@ const product = {
     getProductById: (state) => (productSlug) => {
       console.log("Fetching single product by ID:", productSlug);
       console.log("ProductData:", state.productData);
-      const products = state.productData.find((p) => p.id == productSlug);
+      const products = state.productData.find((p) => p.slug == productSlug);
       console.log("Product:", product);
       return products;
     },
 
-    
-    // getProductCategory: (state) => (productCategory) => {
-    //   const product = state.productData.filter(
-    //     (p) => p.slug == productCategory
-    //   );
-    //   return product;
-    // }
   },
 
 
   actions: {
     async fetchProducts({ commit }) {
       try {
-        const data = await axios.get("https://ecommerce.olipiskandar.com/api/v1/product/latest/4");
+        const data = await axios.get("https://ecommerce.olipiskandar.com/api/v1/product/latest/8");
         commit("SET_PRODUCTS", data.data['data']);
       } catch (error) {
         alert(error);

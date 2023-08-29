@@ -1,324 +1,299 @@
 <template>
-  <section class="py-12 sm:py-16">
+  <section class="py-20 sm:py-100">
     <div class="container mx-auto px-4">
       <div v-if="product">
         <!-- Breadcrumb -->
-        <nav
-          class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
-          aria-label="Breadcrumb"
-        >
-          <ol class="inline-flex items-center space-x-1 md:space-x-3">
-            <li class="inline-flex items-center">
-              <a
-                href="#"
-                class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
-              >
-                <svg
-                  class="w-3 h-3 mr-2.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
-                  />
-                </svg>
-                Home
-              </a>
-            </li>
-            <li>
-              <div class="flex items-center">
-                <svg
-                  class="w-3 h-3 mx-1 text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 6 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 9 4-4-4-4"
-                  />
-                </svg>
-                <a
-                  href="#"
-                  class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
-                  >Product</a
-                >
-              </div>
-            </li>
-            <li aria-current="page">
-              <div class="flex items-center">
-                <svg
-                  class="w-3 h-3 mx-1 text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 6 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 9 4-4-4-4"
-                  />
-                </svg>
-                <span
-                  class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400"
-                  >{{ product.name }}</span
-                >
-              </div>
-            </li>
-          </ol>
-        </nav>
-        <div
-          class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16"
-        >
-          <div class="lg:col-span-3 lg:row-end-1">
-            <div class="lg:flex lg:items-start">
-              <div class="lg:order-2 lg:ml-5">
-                <div class="max-w-xl overflow-hidden rounded-lg">
-                  
-<figure class="max-w-lg">
-  <img class="h-auto max-w-full rounded-lg flex center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYXnfRCkalZ_JdNXFSoROwcQgbpC-Ls-R_9A&usqp=CAU" alt="image description">
-  <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image caption</figcaption>
-</figure>
+        <nav class="px-4 mb-6 lg:mb-1 lg:px-20 py-20 sm:py-7" aria-label="Breadcrumb">
+      <ol class="list-reset py-2 px-4 rounded-lg bg-gray-100 dark:bg-gray-700 flex text-gray-600 dark:text-gray-400">
+        <li class="flex items-center">
+          <router-link to="/" class="text-blue-500 hover:text-blue-700 dark:text-gray-300 dark:hover:text-gray-100">Home</router-link>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 mx-2">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </li>
+        <li class="flex items-center">
+          <router-link :to="{name: 'product'}" class="text-blue-500 hover:text-blue-700 dark:text-gray-300 dark:hover:text-gray-100">Product</router-link>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 mx-2">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-700 dark:text-gray-300">{{ product.name }}</span>
+        </li>
+      </ol>
+    </nav>
 
-                </div>
-              </div>
-
-              <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
-                <div class="flex flex-row items-start lg:flex-col">
-                  <button
-                    type="button"
-                    class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center"
-                  >
-                    <img
-                      class="h-full w-full object-cover"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYXnfRCkalZ_JdNXFSoROwcQgbpC-Ls-R_9A&usqp=CAU"
-                      alt=""
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center"
-                  >
-                    <img
-                      class="h-full w-full object-cover"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYXnfRCkalZ_JdNXFSoROwcQgbpC-Ls-R_9A&usqp=CAU"
-                      alt=""
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center"
-                  >
-                    <img
-                      class="h-full w-full object-cover"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYXnfRCkalZ_JdNXFSoROwcQgbpC-Ls-R_9A&usqp=CAU"
-                      alt=""
-                    />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-            <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">
-              {{ product.name }}
-            </h1>
-
-            <div class="mt-5 flex items-center">
-              <div class="flex items-center">
-                                <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        class=""></path>
-                                </svg>
-                                <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        class=""></path>
-                                </svg>
-                                <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        class=""></path>
-                                </svg>
-                                <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        class=""></path>
-                                </svg>
-                                <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        class=""></path>
-                                </svg>
+       
+        <div class="max-w-6xl px-4 py-7 mx-auto lg:py-0 md:px-8">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full px-4 md:w-1/2 ">
+                    <div class=" top-0 z-50 overflow-hidden ">
+                        <div class="relative mb-6 lg:mb-10 lg:h-2/4 ">
+                            <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
+                                class="object-cover w-full lg:h-full ">
+                        </div>
+                        <div class="flex-wrap hidden md:flex ">
+                            <div class="w-1/2 p-2 sm:w-1/4">
+                                <a href="#"
+                                    class="block border border-blue-300 dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300">
+                                    <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
+                                        class="object-cover w-full lg:h-20">
+                                </a>
                             </div>
-              <p class="ml-2 text-sm font-medium text-gray-500">{{ product.rating.rate }}</p>
-            </div>
-
-            <h2 class="mt-8 text-base text-gray-900">Category</h2>
-            <div class="mt-3 flex select-none flex-wrap items-center gap-1">
-              <label class="">
-                <input
-                  type="radio"
-                  name="type"
-                  value="Powder"
-                  class="peer sr-only"
-                  checked
-                />
-                <p
-                  class="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold"
-                >
-                  {{ product.category }}
-                </p>
-              </label>
-            </div>
-
-            <div
-              class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0"
-            >
-              <div class="flex items-end">
-                <h1 class="text-3xl font-bold">${{ product.base_price }}</h1>
-                <!-- <span class="text-base">/month</span> -->
-              </div>
-
-              
-
-              <div v-if="token">
-              
-           
-
-              <button @click="addCarts(product.id)"
-                class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+                            <div class="w-1/2 p-2 sm:w-1/4">
+                                <a href="#"
+                                    class="block border border-transparent dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300">
+                                    <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
+                                        class="object-cover w-full lg:h-20">
+                                </a>
+                            </div>
+                            <div class="w-1/2 p-2 sm:w-1/4">
+                                <a href="#"
+                                    class="block border border-transparent dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300">
+                                    <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
+                                        class="object-cover w-full lg:h-20">
+                                </a>
+                            </div>
+                            <div class="w-1/2 p-2 sm:w-1/4">
+                                <a href="#"
+                                    class="block border border-transparent dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300">
+                                    <img src="https://i.postimg.cc/PqYpFTfy/pexels-melvin-buezo-2529148.jpg" alt=""
+                                        class="object-cover w-full lg:h-20">
+                                </a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
                 
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="shrink-0 mr-3 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                  />
-                </svg>
-                Add to cart
-              </button>
+                <div class="w-full px-4 md:w-1/2 ">
+                    <div class="lg:pl-20">
+                        <div class="mb-8 ">
+                            <span class="text-lg font-medium text-rose-500 dark:text-rose-200">New</span>
+                            <h2 class="max-w-xl mt-2 mb-6 text-2xl font-bold dark:text-gray-400 md:text-4xl">
+                                {{product.name}}</h2>
+                            <div class="flex items-center mb-6">
+                                <ul class="flex mr-2">
+                                   
+    <div class="flex items-center">
+        <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+        </svg>
+        <p class="ml-2 text-sm font-bold text-gray-900 dark:text-white">4.95</p>
+        <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"></span>
+        <a href="#" class="text-sm font-medium text-gray-900 underline hover:no-underline dark:text-white">73 reviews</a>
+    </div>
+
+                                </ul>
+                            </div>
+                            <p class="max-w-md mb-8 text-gray-700 dark:text-gray-400">
+                                Lorem ispum dor amet Lorem ispum dor amet Lorem ispum dor amet Lorem ispum dor amet
+                                Lorem ispum dor amet Lorem ispum dor amet Lorem ispum dor amet Lorem ispum dor amet
+                            </p>
+                            <p class="inline-block mb-8 text-4xl font-bold text-gray-700 dark:text-gray-400 ">
+                                <span>{{ formatCurrency(product.base_price) }}</span>
+                                <!-- <span
+                                    class="text-base font-normal text-gray-500 line-through dark:text-gray-400">1111</span> -->
+                            </p>
+                            <p class="text-green-600 dark:text-green-300 ">7 in stock</p>
+                        </div>
+                        <div class="flex items-center mb-8">
+                            <h2 class="w-16 mr-6 text-xl font-bold dark:text-gray-400">
+                                Colors:</h2>
+                            <div class="flex flex-wrap -mx-2 -mb-2">
+                                <button
+                                    class="p-1 mb-2 mr-2 border border-transparent hover:border-blue-400 dark:border-gray-800 dark:hover:border-gray-400 ">
+                                    <div class="w-6 h-6 bg-cyan-300"></div>
+                                </button>
+                                <button
+                                    class="p-1 mb-2 mr-2 border border-transparent hover:border-blue-400 dark:border-gray-800 dark:hover:border-gray-400">
+                                    <div class="w-6 h-6 bg-green-300 "></div>
+                                </button>
+                                <button
+                                    class="p-1 mb-2 border border-transparent hover:border-blue-400 dark:border-gray-800 dark:hover:border-gray-400">
+                                    <div class="w-6 h-6 bg-red-200 "></div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-8">
+                            <h2 class="w-16 text-xl font-bold dark:text-gray-400">
+                                Size:</h2>
+                            <div class="flex flex-wrap -mx-2 -mb-2">
+                                <button
+                                    class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 dark:border-gray-400 hover:text-blue-600 dark:hover:border-gray-300 dark:text-gray-400">XL
+                                </button>
+                                <button
+                                    class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">S
+                                </button>
+                                <button
+                                    class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">M
+                                </button>
+                                <button
+                                    class="py-1 mb-2 mr-1 border w-11 hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">XS
+                                </button>
+                            </div>
+                        </div>
+                        <div class="w-32 mb-8 ">
+                            <!-- <label for=""
+                                class="w-full text-xl font-semibold text-gray-700 dark:text-gray-400">Quantity</label>
+                            <div class="relative flex flex-row w-full h-10 mt-4 bg-transparent rounded-lg">
+                                
+                                <button
+                                    class="w-20 h-full text-gray-600 bg-gray-300 rounded-l outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-400">
+                                    <span class="m-auto text-2xl font-thin">-</span>
+                                </button>
+                                <input type="number"
+                                    class="flex items-center w-full font-semibold text-center text-gray-700 placeholder-gray-700 bg-gray-300 outline-none dark:text-gray-400 dark:placeholder-gray-400 dark:bg-gray-900 focus:outline-none text-md hover:text-black"
+                                    placeholder="1">
+                                <button
+                                    class="w-20 h-full text-gray-600 bg-gray-300 rounded-r outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 hover:bg-gray-400">
+                                    <span class="m-auto text-2xl font-thin">+</span>
+                                </button>
+
+                            </div> -->
+                        </div>
+                        <div class="flex flex-wrap items-center -mx-4 ">
+                            <div class="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
+
+                              <div v-if="token">
+                                
+                                <button  @click="addCarts(product.id), addCart"
+                                    class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+                                    Add to Cart
+                                </button>
+
+                              </div>
+
+                              <div v-else>
+                              <router-link 
+                                    class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300" to="/login">
+                                    Add to Cart
+                              </router-link>
+                            </div>
+
+                            </div>
+
+                            <div class="w-full px-4 mb-4 lg:mb-0 lg:w-1/2">
+                                <button
+                                    class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+                                    Add to wishlist
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div v-else>
-              <router-link  class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800" to="/login" >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="shrink-0 mr-3 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                  />
-                </svg>
-                Add to cart
-              </router-link>
-            </div>
-
-            </div>
-
-  
-
-            <ul class="mt-8 space-y-2">
-              <li
-                class="flex items-center text-left text-sm font-medium text-gray-600"
-              >
-                <svg
-                  class="mr-2 block h-5 w-5 align-middle text-gray-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    class=""
-                  ></path>
-                </svg>
-                Free shipping worldwide
-              </li>
-
-              <li
-                class="flex items-center text-left text-sm font-medium text-gray-600"
-              >
-                <svg
-                  class="mr-2 block h-5 w-5 align-middle text-gray-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                    class=""
-                  ></path>
-                </svg>
-                Cancel Anytime
-              </li>
-            </ul>
-          </div>
-
-          <div class="lg:col-span-3">
-            <div class="border-b border-gray-300">
-              <nav class="flex gap-4">
-                <a
-                  href="#"
-                  title=""
-                  class="border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800"
-                >
-                  Description
-                </a>
-              </nav>
-            </div>
-
-            <div class="mt-8 flow-root sm:mt-12">
-              <p class="mt-4">{{ product.metaTitle }}</p>
-            </div>
-          </div>
         </div>
+
+        <!-- Rating and Comment Component -->
+<div class="flex bg-white-50 dark:bg-white-800  border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12 space-x-8">
+    <!-- Rating Section -->
+    <div class="w-1/2">
+        <div class="flex items-center mb-2">
+            <!-- Add the star SVG elements here -->
+            <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+    <svg class="w-4 h-4 text-gray-300 mr-1 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+    </svg>
+
+            <!-- ... -->
+            <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white">4.95 out of 5</p>
+        </div>
+        
+        <!-- Rating details for each star level -->
+        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">1,745 global ratings</p>
+        <div class="flex items-center mt-4">
+            <a href="#" class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">5 star</a>
+    <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+        <div class="h-5 bg-yellow-300 rounded" style="width: 70%"></div>
+    </div>
+    <span class="text-sm font-medium text-gray-500 dark:text-gray-400">70%</span>
+            <!-- ... -->
+        </div>
+        <div class="flex items-center mt-4">
+            <a href="#" class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">4 star</a>
+    <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+        <div class="h-5 bg-yellow-300 rounded" style="width: 17%"></div>
+    </div>
+    <span class="text-sm font-medium text-gray-500 dark:text-gray-400">17%</span>
+            <!-- ... -->
+        </div>
+        <div class="flex items-center mt-4">
+            <a href="#" class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">2 star</a>
+    <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+        <div class="h-5 bg-yellow-300 rounded" style="width: 4%"></div>
+    </div>
+    <span class="text-sm font-medium text-gray-500 dark:text-gray-400">4%</span>
+            <!-- ... -->
+        </div>
+        <div class="flex items-center mt-4">
+            <a href="#" class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">1 star</a>
+    <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
+        <div class="h-5 bg-yellow-300 rounded" style="width: 1%"></div>
+    </div>
+    <span class="text-sm font-medium text-gray-500 dark:text-gray-400">1%</span>
+            <!-- ... -->
+        </div>
+        <div class="flex items-center mt-4">
+            <!-- ... -->
+        </div>
+    </div>
+    
+    <!-- Comment Section -->
+    <div class="w-1/2">
+        <div class="flex items-center mb-4 space-x-4">
+            <img class="w-10 h-10 rounded-full" src="https://64.media.tumblr.com/b30a4f0baec32180588de95ad7d20b22/29b8ddfb384e9f67-5b/s540x810/58c86e2deedc986f993deb9690ea63557afb2da9.png" alt="">
+            <div class="space-y-1 font-medium dark:text-white">
+                <p class="text-gray-900 dark:text-white">Kasumi <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Joined on August 2014</time></p>
+                <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white">Thinking to buy another one!</p>
+            </div>
+        </div>
+        
+        <!-- Comment details -->
+        <footer class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+            <p>Reviewed in the United Kingdom on <time datetime="2017-03-03 19:00">March 3, 2017</time></p>
+        </footer>
+        <p class="mb-2 text-gray-500 dark:text-gray-400">
+            This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems.
+            <!-- ... -->
+        </p>
+        <p class="mb-3 text-gray-500 dark:text-gray-400">
+            <!-- ... -->
+        </p>
+        <a href="#" class="block mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Read more</a>
+        <aside>
+            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">19 people found this helpful</p>
+            <div class="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">
+                <a href="#" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Helpful</a>
+                <a href="#" class="pl-4 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Report abuse</a>
+            </div>
+        </aside>
+    </div>
+</div>
+
       </div>
       <div v-else>Product not found.</div>
     </div>
   </section>
+
+
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import swal from 'sweetalert';
 
 export default {
 
@@ -332,7 +307,7 @@ export default {
     ...mapGetters("product", ["getProductById"]),
     ...mapGetters("cart", ["getCarts"]),
     product() {
-      return this.getProductById(Number(this.$route.params.slug));
+      return this.getProductById(this.$route.params.slug);
     },
   },
   methods: {
@@ -342,17 +317,28 @@ export default {
 
     ...mapActions("product", ["addCarts"]),
 
+    formatCurrency(price) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(price);
+    }, 
+
+        addCart() {
+      // Implement your checkout logic here
+      swal("Thank You!", "Your Payment have success!", "success");
+    },
+
+
    
     
   },
   beforeMount() {
     this.fetchProducts()
     this.fetchCarts()
-    
 
     const cekToken = localStorage.getItem("token")
     this.token = cekToken
   },
+
+
 };
 
 </script>

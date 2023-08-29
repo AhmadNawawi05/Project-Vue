@@ -53,6 +53,7 @@ const router = createRouter({
       path: "/cart",
       name: "cart",
       component: () => import("../views/CartView.vue"),
+      beforeEnter : cekToken,
     },
     {
       path: "/brands",
@@ -70,20 +71,28 @@ const router = createRouter({
       component: () => import("../views/SingleProductView.vue"),
     },
     {
+      path: "/checkout",
+      name: "checkout",
+      component: () => import("../views/CheckoutView.vue"),
+    },
+    {
+      path: "/order/:orderCode",
+      name: "order",
+      component: () => import("../views/OrderView.vue"),
+      props: true,
+    },
+    {
       path: "/user",
       name: "user",
       component: () => import("../views/UserView.vue"),
       beforeEnter : cekToken,
     },
 
-
-
-
-
     {
       path: '/:catchAll(.*)*',
-      name: "PageNotFound",
-      component:  () => import("../views/PageNotFoundView.vue"),
+      name: 'PageNotFound',
+      component: () => import('../views/PageNotFoundView.vue'),
+      meta: { layout: 'page-not-found' }, // Atur layout khusus di sini
     },
   ],
 });

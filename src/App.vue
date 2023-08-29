@@ -2,9 +2,7 @@
   <div>
     <NavbarComponents   />
 
-
-
-    <router-view @id-menu="setMenu($event)" />
+    <router-view />
 
     <footerComponents />
 
@@ -22,8 +20,6 @@ export default {
     name: 'App',
     components : {
       NavbarComponents,
-
-
 
       footerComponents
     },

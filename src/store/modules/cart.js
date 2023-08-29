@@ -4,9 +4,14 @@ const cart = {
   namespaced: true,
   state: {
     cartsData: [],
+    addresData: [],
+    checkoutData: [],
   },
   getters: {
     getCarts: (state) => state.cartsData,
+    getAddres: (state) => state.addresData,
+    getCheckout: (state) => state.checkoutData,
+
   },
   actions: {
     async fetchCarts({ commit }) {
@@ -46,7 +51,7 @@ const cart = {
             },
           }
         );
-        commit("EDIT_CARTS", response.data);
+      
         console.log("response from carts", response.data);
       } catch (error) {
         console.error(error);
@@ -79,6 +84,67 @@ const cart = {
       }
     },    
 
+    async fetchAddres({commit, dispatch }, ) {
+      try {
+        const response = await axios.get(
+          "https://ecommerce.olipiskandar.com/api/v1/user/addresses",
+
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+          
+        );
+        commit("FETCH_ADDRES", response.data.data);
+        console.log("response from carts", response.data.data);
+        return response.data
+      } catch (error) {
+        console.error(error);
+      } finally {
+        dispatch("cart/fetchCarts", null, { root: true });
+      }
+
+    },
+
+    async checkoutCart({ commit, dispatch },
+      {
+        shippingAddress,
+        billingAddress,
+        paymentType,
+        deliveryType,
+        cart_item_ids,
+      }
+    ) {
+      try {
+        const response = await axios.post(
+          `https://ecommerce.olipiskandar.com/api/v1/checkout/order/store`,
+          {
+            shipping_address_id: shippingAddress,
+            billing_address_id: billingAddress,
+            payment_type: paymentType,
+            delivery_type: deliveryType,
+            cart_item_ids: cart_item_ids,
+            transactionId: null,
+            receipt: null,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        console.log(response.data.message);
+        dispatch("fetchCarts");
+        commit('SET_CHECKOUT', response.data);
+      } catch (error) {
+        alert("Error");
+        console.log(error);
+      }
+    },
+
+    
+
 
 
   },
@@ -87,9 +153,12 @@ const cart = {
     SET_CARTS(state, cart) {
       state.cartsData = cart;
     },
-      EDIT_CARTS(state, cart){
-        state.cartsData = cart
+    FETCH_ADDRES(state, addres){
+        state.addresData = addres
     },
+    SET_CHECKOUT(state, checkout){
+      state.checkoutData = checkout
+  },
   },
 };
 
