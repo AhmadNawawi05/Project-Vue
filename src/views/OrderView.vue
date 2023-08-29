@@ -52,10 +52,14 @@
                                     <p class="text-base dark:text-white leading-4 text-gray-800">Shipping Method</p>
                                     <p class="text-base dark:text-gray-300 leading-4 text-gray-600">{{ getOrder.orders[0].delivery_type }}</p>
                                 </div>
+                                <div class="flex justify-between items-center w-full">
+                                    <p class="text-base dark:text-white leading-4 text-gray-800">Payment Method</p>
+                                    <p class="text-base dark:text-gray-300 leading-4 text-gray-600">{{ getOrder.orders[0].payment_type }}</p>
+                                </div>
                             </div>
                             <div class="flex justify-between items-center w-full">
                                 <p class="text-base dark:text-white font-semibold leading-4 text-gray-800">Total</p>
-                                <p class="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">{{ formatCurrency(getOrder.grand_total - 20000) }}</p>
+                                <p class="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">{{ formatCurrency(getOrder.grand_total + 20000) }}</p>
                             </div>
                         </div>
                         <div class="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 dark:bg-gray-800 space-y-6">

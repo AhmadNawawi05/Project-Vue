@@ -96,7 +96,7 @@
                     </label>
                 </div>
                 <div class="relative">
-                    <input class="peer hidden" id="radio_4" type="radio" value="cash_on_delivery" v-model="deliveryType" />
+                    <input class="peer hidden" id="radio_4" type="radio" value="payment_wallet" v-model="paymentType" />
                     <span
                         class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                     <label
